@@ -56,22 +56,22 @@ export const HeartLoader: React.FC<HeartLoaderProps> = ({ onComplete }) => {
       duration: 0.2,
       ease: 'power1.in'
     })
-    .to(boxRef.current, {
-      scale: 0.2,
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.inOut'
-    }, '<')
-    .to(buttonRef.current, {
-      opacity: 0,
-      duration: 0.2
-    }, '<')
-    // 2. Fade out the white flash to reveal the website
-    .to(flashRef.current, {
-      opacity: 0,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
+      .to(boxRef.current, {
+        scale: 0.2,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.inOut'
+      }, '<')
+      .to(buttonRef.current, {
+        opacity: 0,
+        duration: 0.2
+      }, '<')
+      // 2. Fade out the white flash to reveal the website
+      .to(flashRef.current, {
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power2.out'
+      });
   };
 
   return (
@@ -90,7 +90,7 @@ export const HeartLoader: React.FC<HeartLoaderProps> = ({ onComplete }) => {
         {clicked ? (
           <span className="text-[#ffff00] animate-pulse">* MENDING SOUL...</span>
         ) : (
-          <span>* Your soul is fractured.<br />* Mend it to initiate determination.</span>
+          <span>* Your soul is fractured.<br />* Mend it to restore determination.</span>
         )}
       </div>
 
@@ -162,9 +162,8 @@ export const HeartLoader: React.FC<HeartLoaderProps> = ({ onComplete }) => {
         ref={buttonRef}
         onClick={handleMend}
         disabled={clicked}
-        className={`mt-10 px-8 py-3.5 border-[3px] border-white bg-black hover:bg-white hover:text-black text-white text-[10px] tracking-widest uppercase select-none transition-all active:scale-95 duration-150 relative shadow-[4px_4px_0_#fff] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] ${
-          clicked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-        }`}
+        className={`mt-10 px-8 py-3.5 border-[3px] border-white bg-black hover:bg-white hover:text-black text-white text-[10px] tracking-widest uppercase select-none transition-all active:scale-95 duration-150 relative shadow-[4px_4px_0_#fff] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] ${clicked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+          }`}
       >
         [ MEND SOUL ]
       </button>
