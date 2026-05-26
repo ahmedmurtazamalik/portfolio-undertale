@@ -32,9 +32,9 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
   }, []);
 
   const bioLines = [
-    "I am a passionate CS graduate based in Islamabad, with a strong foundation and knowledge of Generative AI, Deep Learning, and High-Performance Computing. I specialize in AI development and full-stack applications, and have dabbled in indie game development on GameMaker and RPGMaker. My professional career is driven by a desire to architect robust software and intelligent, scalable systems that solve cool problems I am passionate about :)",
-    "Most recently, I worked as an AI Intern at Automotive Artificial Intelligence GmbH, where I worked on pipelines that handled geospatial data for HD Lane-Level Mapping tailored for autonomous vehicle navigation.",
-    "Beyond the profession, I enjoy film, sports and many other media, and I am an avid narrative writer. If you see me, chances are there's a story in my head :D"
+    "I am a passionate CS graduate based in Islamabad, with a strong foundation and knowledge of [y]Generative AI[w], [y]Deep Learning[w], and [y]High-Performance Computing[w]. I specialize in [y]AI development[w] and [y]full-stack applications[w], and have dabbled in [y]indie game development[w] on GameMaker and RPGMaker. My professional career is driven by a desire to architect robust software and intelligent, scalable systems that solve cool problems I am passionate about :)",
+    "Most recently, I worked as an [y]AI Intern[w] at [y]Automotive Artificial Intelligence GmbH[w], where I worked on pipelines that handled geospatial data for [y]HD Lane-Level Mapping[w] tailored for [y]autonomous vehicle navigation[w].",
+    "Beyond the profession, I enjoy film, sports and many other media, and I am an avid [y]narrative writer[w]. If you see me, chances are there's a story in my head :D"
   ];
 
   const items = [
@@ -169,7 +169,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
           {/* Custom Pixel Art Avatar generated for Murtaza */}
           <div className="w-32 h-40 flex items-center justify-center bg-[#0d1f36]/40 border-3 border-[#4a7fb5] p-3 shadow-[0_5px_0_#000] overflow-hidden">
             <img 
-              src="/src/assets/murtaza_pixel_avatar.png"
+              src="/murtaza_pixel_avatar.png"
               alt="Murtaza Pixel Avatar"
               className="pixelated w-full h-full object-contain adventurer-bob"
             />

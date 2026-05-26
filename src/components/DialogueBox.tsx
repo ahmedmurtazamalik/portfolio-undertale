@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { playDialogueTick } from '../utils/audio';
 
 interface DialogueBoxProps {
@@ -9,6 +9,37 @@ interface DialogueBoxProps {
   speed?: number; // Time in ms per character
 }
 
+interface StyledChar {
+  char: string;
+  color: string;
+}
+
+export function parseStyledText(text: string): { chars: StyledChar[]; rawText: string } {
+  const chars: StyledChar[] = [];
+  let currentColor = 'inherit';
+  let i = 0;
+  while (i < text.length) {
+    if (text[i] === '[') {
+      const closeIdx = text.indexOf(']', i);
+      if (closeIdx !== -1) {
+        const tag = text.substring(i + 1, closeIdx);
+        if (tag === 'y' || tag === 'r' || tag === 'b' || tag === 'w') {
+          if (tag === 'y') currentColor = '#ffff00'; // Yellow
+          else if (tag === 'r') currentColor = '#ff0000'; // Red
+          else if (tag === 'b') currentColor = '#38bdf8'; // Cyan/Blue
+          else if (tag === 'w') currentColor = 'inherit'; // White/Default
+          i = closeIdx + 1;
+          continue;
+        }
+      }
+    }
+    chars.push({ char: text[i], color: currentColor });
+    i++;
+  }
+  const rawText = chars.map((c) => c.char).join('');
+  return { chars, rawText };
+}
+
 export const DialogueBox: React.FC<DialogueBoxProps> = ({
   lines,
   isActive,
@@ -16,15 +47,18 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
   onComplete,
   speed = 12, // 12ms per character creates a highly snappy, fluid reading speed
 }) => {
-  const [visibleLines, setVisibleLines] = useState<string[]>(lines.map(() => ''));
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
+  // Parse lines to extract styling information
+  const parsedLines = useMemo(() => {
+    return lines.map((line) => parseStyledText(line));
+  }, [lines]);
+
   useEffect(() => {
     if (!isActive) {
       // Reset state if section is exited, allowing for re-typing when scrolling back
-      setVisibleLines(lines.map(() => ''));
       setCurrentLineIndex(0);
       setCurrentCharIndex(0);
       setIsFinished(false);
@@ -33,25 +67,19 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
 
     if (isFinished) return;
 
-    if (lines.length === 0) {
+    if (parsedLines.length === 0) {
       setIsFinished(true);
       if (onComplete) onComplete();
       return;
     }
 
-    const currentLine = lines[currentLineIndex];
+    const currentLine = parsedLines[currentLineIndex];
 
-    if (currentCharIndex < currentLine.length) {
-      const char = currentLine[currentCharIndex];
+    if (currentCharIndex < currentLine.chars.length) {
+      const charObj = currentLine.chars[currentCharIndex];
       const timer = setTimeout(() => {
-        setVisibleLines((prev) => {
-          const updated = [...prev];
-          updated[currentLineIndex] = currentLine.substring(0, currentCharIndex + 1);
-          return updated;
-        });
-
         // Don't play tick sound for spaces to sound more natural
-        if (char !== ' ') {
+        if (charObj.char !== ' ') {
           playDialogueTick();
         }
 
@@ -61,7 +89,7 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
       return () => clearTimeout(timer);
     } else {
       // Line complete, schedule transition to next line
-      if (currentLineIndex < lines.length - 1) {
+      if (currentLineIndex < parsedLines.length - 1) {
         const lineBreakTimer = setTimeout(() => {
           setCurrentLineIndex((prev) => prev + 1);
           setCurrentCharIndex(0);
@@ -73,7 +101,7 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
         if (onComplete) onComplete();
       }
     }
-  }, [isActive, currentLineIndex, currentCharIndex, lines, isFinished, speed, onComplete]);
+  }, [isActive, currentLineIndex, currentCharIndex, parsedLines, isFinished, speed, onComplete]);
 
   return (
     <div
@@ -82,21 +110,31 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
       <div className="flex-1 relative">
         {/* Constant layout skeleton to prevent container resizing/jumping during typing */}
         <div className="invisible select-none pointer-events-none">
-          {lines.map((line, idx) => (
+          {parsedLines.map((parsed, idx) => (
             <p key={idx} className="m-0 mb-6 last:mb-0 min-h-[1.5em] whitespace-pre-wrap">
-              {line}
+              {parsed.rawText}
             </p>
           ))}
         </div>
 
         {/* Dynamic typewriter visual layer overlay */}
         <div className="absolute inset-0">
-          {visibleLines.map((line, idx) => {
+          {parsedLines.map((parsed, idx) => {
             // Do not render subsequent paragraphs until the typewriter reaches them
             if (idx > currentLineIndex) return null;
+
+            const visibleChars =
+              idx === currentLineIndex
+                ? parsed.chars.slice(0, currentCharIndex)
+                : parsed.chars;
+
             return (
               <p key={idx} className="m-0 mb-6 last:mb-0 min-h-[1.5em] whitespace-pre-wrap select-none">
-                {line}
+                {visibleChars.map((charObj, charIdx) => (
+                  <span key={charIdx} style={{ color: charObj.color }}>
+                    {charObj.char}
+                  </span>
+                ))}
               </p>
             );
           })}
@@ -121,3 +159,4 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
     </div>
   );
 };
+
