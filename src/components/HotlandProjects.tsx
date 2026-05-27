@@ -21,7 +21,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
 
   useEffect(() => {
     if (!cardsRef.current) return;
-    
+
     // Clear any previous inline styles
     const cards = cardsRef.current.children;
     gsap.killTweensOf(cards);
@@ -31,11 +31,11 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       gsap.fromTo(
         cards,
         { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.5, 
-          stagger: 0.1, 
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
           ease: 'power2.out',
           overwrite: 'auto'
         }
@@ -53,7 +53,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       desc: 'MERN-stack focus web app for neurodivergent adults, featuring mood-adaptive AI chatbots, user sentiment analysis, real-time WebRTC body doubling, and gamified task tracking.',
       tech: ['React', 'Node.js', 'Express', 'MongoDB', 'WebSockets', 'WebRTC'],
       flavorText: '* "An assistive companion. Focus and productivity increase by 25."',
-      github: 'https://github.com/ahmedmurtazamalik/suraiyya',
+      github: 'https://github.com/ahmedmurtazamalik/surraiya',
       // Pixel heart/brain icon
       iconPath: 'M3 1h2v1H3zm4 0h2v1H7zM2 2h8v1H2zM1 3h10v1H1zM1 4h10v1H1zM2 5h8v1H2zm1 1h6v1H3zm2 1h2v1H5z'
     },
@@ -63,7 +63,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       desc: 'AI research platform engineered to automate Systematic Literature Reviews. Enables researchers to analyze large corpora, perform document queries, and construct semantic summaries.',
       tech: ['PyTorch', 'FastAPI', 'React', 'Transformers', 'Python'],
       flavorText: '* "An ancient scroll of knowledge. Increases INT by 15."',
-      github: 'https://github.com/ahmedmurtazamalik',
+      github: 'https://github.com/ahmedmurtazamalik/scholarsense',
       // Pixel book icon
       iconPath: 'M2 1h7v1H2zm0 1h1v6H2zm1 0h6v1H3zm0 5h6v1H3zm6-5h1v6H9zM3 3h4v1H3zm0 2h4v1H3z'
     },
@@ -93,7 +93,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       desc: 'High-performance parallel computation of Butterfly Cooley-Tukey FFT structures and Cooley-Tukey Kronecker products to accelerate multi-dimensional signal transformations.',
       tech: ['Python', 'OpenCL', 'Parallel Computing', 'FFT'],
       flavorText: '* "A butterfly matrix engine. Signal FFT transforms speed up by 40%."',
-      github: 'https://github.com/ahmedmurtazamalik/butterfly-algorithms',
+      github: 'https://github.com/ahmedmurtazamalik/butterfly-parallelization',
       // Pixel butterfly shape
       iconPath: 'M1 1h2v1H1zm5 0h2v1H6zm-1 1h1v1H5zm-5 1h1v1H0zm8 0h1v1H8zm-7 1h2v1H1zm5 0h2v1H5zm-4 1h4v1H2zm-1 1h6v1H1z'
     },
@@ -103,7 +103,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       desc: 'Generative adversarial network trained to perform unpaired image-to-image translation between real facial photographs and artist hand-drawn sketches, preserving facial geometry.',
       tech: ['PyTorch', 'GANs', 'Computer Vision', 'OpenCV'],
       flavorText: '* "An adversarial brush. Generative sketch accuracy increases by 25."',
-      github: 'https://github.com/ahmedmurtazamalik/CycleGAN-Face-Sketches',
+      github: 'https://github.com/ahmedmurtazamalik/cyclegan-face-sketch',
       // Pixel face mask shape
       iconPath: 'M2 1h6v1H2zm-1 1h8v1H1zm0 1h8v1H1zm0 1h8v1H1zm1 1h6v1H2zm1 1h4v1H3zm1 1h2v1H4z'
     }
@@ -111,7 +111,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
 
   return (
     <section className="scroll-section w-full h-screen bg-[#1a0800] text-[#f5e0c8] flex flex-col justify-between p-12 max-md:p-6 overflow-hidden relative">
-      
+
       {/* BACKGROUND: Hotland girders and machinery silhouettes */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-20">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +123,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
             <line x1="0" y1="120" x2="120" y2="120" stroke="#c44b1e" strokeWidth="2" />
           </pattern>
           <rect width="100%" height="100%" fill="url(#girders)" />
-          
+
           {/* Silhouetted lab capsules */}
           <rect x="80%" y="30%" width="40" height="120" rx="20" fill="#2a1a0a" stroke="#c44b1e" strokeWidth="2" />
           <rect x="10%" y="40%" width="30" height="90" rx="15" fill="#2a1a0a" stroke="#c44b1e" strokeWidth="2" />
@@ -137,7 +137,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       <div className="absolute bottom-0 left-0 right-0 h-12 z-10 pointer-events-none select-none lava-pulse" />
 
       {/* EASTER EGG: Steaming hot dog cooked by ambient heat */}
-      <div 
+      <div
         className="absolute bottom-[16%] right-[12%] z-20 pointer-events-auto cursor-none group"
         onMouseEnter={() => setShowHotdogText(true)}
         onMouseLeave={() => setShowHotdogText(false)}
@@ -163,10 +163,9 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
         </div>
 
         {/* Hotdog Dialogue Popup (INCREASED size to 12px) */}
-        <div 
-          className={`absolute bottom-12 right-0 w-80 bg-black border-2 border-white text-white p-4 font-press text-[12px] leading-relaxed shadow-[0_4px_12px_rgba(0,0,0,0.7)] transition-all duration-200 pointer-events-none z-30 ${
-            showHotdogText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-          }`}
+        <div
+          className={`absolute bottom-12 right-0 w-80 bg-black border-2 border-white text-white p-4 font-press text-[12px] leading-relaxed shadow-[0_4px_12px_rgba(0,0,0,0.7)] transition-all duration-200 pointer-events-none z-30 ${showHotdogText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+            }`}
         >
           * A hot dog sits on a warm metal plate.<br />* It is cooked by the ambient heat of the room.<br />* It fills you with determination.
         </div>
@@ -184,8 +183,8 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
 
       {/* CORE CARD GRID CONTAINER */}
       <div className="z-10 flex-1 flex flex-col justify-center w-full max-w-6xl mx-auto my-2 overflow-hidden pr-1">
-        
-        <div 
+
+        <div
           ref={cardsRef}
           className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-6 w-full max-h-[82vh] md:max-h-none overflow-y-auto no-scrollbar p-1.5"
         >
@@ -203,7 +202,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
                       <path d={proj.iconPath} />
                     </svg>
                   </div>
-                  
+
                   <h3 className="font-press text-[12px] text-white m-0 tracking-wide">
                     {proj.name}
                   </h3>
@@ -212,7 +211,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
                 {/* Tech Chips */}
                 <div className="flex flex-wrap gap-1.5 mt-2.5">
                   {proj.tech.map((t) => (
-                    <span 
+                    <span
                       key={t}
                       className="text-[8px] font-mono border border-[#502010] bg-[#1a0a05] px-1.5 py-0.5 text-[#f5e0c8]"
                     >
