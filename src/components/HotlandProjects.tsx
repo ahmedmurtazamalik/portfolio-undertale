@@ -92,7 +92,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       name: 'Butterfly Algorithms',
       desc: 'A high performance C++ implementation of parallel butterfly counting algorithms for bipartite graphs, utilizing OpenMP and MPI to optimize computational efficiency and scalability.',
       tech: ['C++', 'MPI', 'OpenMP', 'Python'],
-      flavorText: '* "A butterfly matrix engine. Signal FFT transforms speed up by 40%."',
+      flavorText: '* "A butterfly parallelization engine. Algorithm efficiency increases 40%."',
       github: 'https://github.com/ahmedmurtazamalik/butterfly-parallelization',
       // Pixel butterfly shape
       iconPath: 'M1 1h2v1H1zm5 0h2v1H6zm-1 1h1v1H5zm-5 1h1v1H0zm8 0h1v1H8zm-7 1h2v1H1zm5 0h2v1H5zm-4 1h4v1H2zm-1 1h6v1H1z'
