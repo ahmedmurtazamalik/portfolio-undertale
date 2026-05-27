@@ -90,8 +90,8 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
     {
       id: 'butterfly',
       name: 'Butterfly Algorithms',
-      desc: 'High-performance parallel computation of Butterfly Cooley-Tukey FFT structures and Cooley-Tukey Kronecker products to accelerate multi-dimensional signal transformations.',
-      tech: ['Python', 'OpenCL', 'Parallel Computing', 'FFT'],
+      desc: 'A high performance C++ implementation of parallel butterfly counting algorithms for bipartite graphs, utilizing OpenMP and MPI to optimize computational efficiency and scalability.',
+      tech: ['C++', 'MPI', 'OpenMP', 'Python'],
       flavorText: '* "A butterfly matrix engine. Signal FFT transforms speed up by 40%."',
       github: 'https://github.com/ahmedmurtazamalik/butterfly-parallelization',
       // Pixel butterfly shape
