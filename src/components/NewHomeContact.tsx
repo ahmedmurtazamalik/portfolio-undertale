@@ -66,8 +66,35 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
         
         {/* Fireplace (Hearth) and Pixel Fire */}
         <div className="flex flex-col items-center gap-3 select-none relative">
-          {/* Ambient Glow centered right behind the fire */}
-          <div className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[radial-gradient(circle,_rgba(232,114,26,0.3)_0%,_rgba(196,75,30,0.1)_45%,_transparent_70%)] z-0 pointer-events-none select-none animate-[pulse_3s_infinite_ease-in-out]" />
+          {/* Firelight Flicker Keyframe Style Block */}
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes firelightFlicker {
+              0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.85;
+              }
+              30% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+              }
+              50% {
+                transform: translate(-50%, -50%) scale(0.92);
+                opacity: 0.72;
+              }
+              80% {
+                transform: translate(-50%, -50%) scale(1.05);
+                opacity: 0.9;
+              }
+            }
+          `}} />
+
+          {/* Ambient Glow centered right behind the fire (Expanded size and higher opacity) */}
+          <div 
+            className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] max-md:w-[480px] max-md:h-[480px] bg-[radial-gradient(circle,_rgba(232,114,26,0.45)_0%,_rgba(196,75,30,0.16)_40%,_rgba(12,12,20,0)_70%)] z-0 pointer-events-none select-none"
+            style={{
+              animation: 'firelightFlicker 1.6s infinite ease-in-out'
+            }}
+          />
 
           <div className="w-36 h-24 bg-transparent relative flex justify-center items-end z-10">
             

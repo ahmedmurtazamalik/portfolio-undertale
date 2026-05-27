@@ -86,7 +86,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
       }
     }
 
-    const particles: SnowParticle[] = Array.from({ length: 65 }, () => new SnowParticle(true));
+    const particles: SnowParticle[] = Array.from({ length: 250 }, () => new SnowParticle(true));
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);

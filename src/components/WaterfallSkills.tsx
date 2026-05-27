@@ -33,50 +33,121 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
     };
     window.addEventListener('resize', handleResize);
 
-    // Particle class
+    // Waterfall stream particle (vertical streaks of rapid falling water)
     class PixelParticle {
-      x: number;
-      y: number;
-      size: number;
-      speed: number;
-      opacity: number;
+      x: number = 0;
+      y: number = 0;
+      w: number = 0;
+      h: number = 0;
+      speed: number = 0;
+      opacity: number = 0;
+      color: string = '';
 
-      constructor() {
+      constructor(initY = false) {
+        this.reset();
+        if (initY) {
+          this.y = Math.random() * height;
+        }
+      }
+
+      reset() {
         this.x = Math.random() * width;
-        this.y = Math.random() * -height;
-        this.size = Math.floor(Math.random() * 3) + 2; // 2px to 4px
-        this.speed = Math.random() * 4 + 3; // descending speed
-        this.opacity = Math.random() * 0.5 + 0.3;
+        this.y = -Math.random() * 120 - 20;
+        this.w = Math.floor(Math.random() * 2) + 2; // 2px to 3px wide
+        this.h = Math.floor(Math.random() * 28) + 12; // 12px to 40px streaks!
+        this.speed = Math.random() * 9 + 8; // fast rushing water (8px to 17px per frame)
+        this.opacity = Math.random() * 0.5 + 0.35;
+
+        // Visual color styling - Undertale bioluminescent cave waterfall colors
+        const rand = Math.random();
+        if (rand < 0.22) {
+          this.color = `rgba(255, 255, 255, ${this.opacity})`; // white foam/mist
+        } else if (rand < 0.65) {
+          this.color = `rgba(64, 196, 170, ${this.opacity})`; // bright cyan/teal
+        } else {
+          this.color = `rgba(28, 102, 128, ${this.opacity * 0.7})`; // deeper translucent dark blue
+        }
       }
 
       update() {
         this.y += this.speed;
         if (this.y > height) {
-          this.y = Math.random() * -20;
-          this.x = Math.random() * width;
+          this.reset();
         }
       }
 
       draw(c: CanvasRenderingContext2D) {
-        c.fillStyle = `rgba(64, 196, 170, ${this.opacity})`;
-        // Render hard pixel squares
+        c.fillStyle = this.color;
+        c.fillRect(Math.floor(this.x), Math.floor(this.y), this.w, this.h);
+      }
+    }
+
+    // Splashing foam particles at the bottom of the waterfall
+    class SplashParticle {
+      x: number = 0;
+      y: number = 0;
+      size: number = 0;
+      vx: number = 0;
+      vy: number = 0;
+      opacity: number = 0;
+      life: number = 0;
+      maxLife: number = 0;
+      color: string = '';
+
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height - Math.random() * 25;
+        this.size = Math.floor(Math.random() * 3) + 2; // 2px to 4px square particles
+        this.vx = Math.random() * 3 - 1.5; // slight horizontal drift
+        this.vy = -(Math.random() * 4 + 3); // splashed upwards
+        this.opacity = Math.random() * 0.6 + 0.4;
+        this.maxLife = Math.random() * 25 + 15;
+        this.life = this.maxLife;
+        this.color = Math.random() < 0.45 ? 'rgba(255, 255, 255, ' : 'rgba(64, 196, 170, ';
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.15; // gravity pull
+        this.life--;
+        if (this.life <= 0 || this.y > height) {
+          this.reset();
+        }
+      }
+
+      draw(c: CanvasRenderingContext2D) {
+        const currentOpacity = this.opacity * (this.life / this.maxLife);
+        c.fillStyle = `${this.color}${currentOpacity})`;
         c.fillRect(Math.floor(this.x), Math.floor(this.y), this.size, this.size);
       }
     }
 
-    const particles: PixelParticle[] = Array.from({ length: 250 }, () => new PixelParticle());
+    // Heavy water particles and splashing foam
+    const waterParticles: PixelParticle[] = Array.from({ length: 550 }, () => new PixelParticle(true));
+    const splashParticles: SplashParticle[] = Array.from({ length: 180 }, () => new SplashParticle());
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw faint dark blue waterfall back column (ambient tint)
+      // Draw subtle ambient dark blue overlay (water cave atmosphere)
       ctx.fillStyle = 'rgba(26, 64, 96, 0.08)';
       ctx.fillRect(0, 0, width, height);
 
-      // Draw falling pixel particles
-      particles.forEach((p) => {
+      // Render rushing water streaks
+      waterParticles.forEach((p) => {
         p.update();
         p.draw(ctx);
+      });
+
+      // Render bottom splashing foam
+      splashParticles.forEach((sp) => {
+        sp.update();
+        sp.draw(ctx);
       });
 
       animationFrameId = requestAnimationFrame(render);

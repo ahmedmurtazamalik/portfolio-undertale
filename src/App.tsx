@@ -126,7 +126,7 @@ function App() {
           {/* Music Toggle Button */}
           <button
             onClick={handleToggleMusic}
-            className="fixed top-6 right-6 z-50 bg-black border-[3px] border-white text-white p-3 font-press text-[9px] uppercase flex items-center gap-2.5 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none"
+            className="fixed left-6 top-1/2 -translate-y-1/2 z-50 bg-black border-[3px] border-white text-white p-3 font-press text-[9px] uppercase flex flex-col items-center gap-1.5 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none"
             aria-label="Toggle Background Music"
           >
             <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center">
@@ -141,8 +141,11 @@ function App() {
                 </svg>
               )}
             </div>
-            <span className="max-sm:hidden">
-              Music: {musicEnabled ? 'On' : 'Off'}
+            <span className="text-[7px] mt-1 tracking-wider whitespace-nowrap">
+              MUSIC
+            </span>
+            <span className="text-[8px] font-bold text-[#ffff00] tracking-wider">
+              {musicEnabled ? 'ON' : 'OFF'}
             </span>
           </button>
 
