@@ -49,8 +49,7 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
         </svg>
       </div>
 
-      {/* AMBIENT GLOW: Radiant golden light spreading from the fireplace */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[250px] md:w-[600px] md:h-[350px] bg-radial from-[#c8a060]/20 via-[#c8a060]/5 to-transparent z-0 pointer-events-none select-none" />
+
 
       {/* HEADER: Standard Label */}
       <div className="z-10 select-none flex justify-between items-center w-full">
@@ -66,8 +65,11 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
       <div className="z-10 flex-1 flex flex-col items-center justify-center gap-8 w-full max-w-4xl mx-auto px-4 my-auto relative">
         
         {/* Fireplace (Hearth) and Pixel Fire */}
-        <div className="flex flex-col items-center gap-3 select-none">
-          <div className="w-36 h-24 bg-transparent relative flex justify-center items-end">
+        <div className="flex flex-col items-center gap-3 select-none relative">
+          {/* Ambient Glow centered right behind the fire */}
+          <div className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[radial-gradient(circle,_rgba(232,114,26,0.3)_0%,_rgba(196,75,30,0.1)_45%,_transparent_70%)] z-0 pointer-events-none select-none animate-[pulse_3s_infinite_ease-in-out]" />
+
+          <div className="w-36 h-24 bg-transparent relative flex justify-center items-end z-10">
             
             {/* Fireplace stone frame SVG */}
             <svg 
@@ -80,8 +82,21 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
               <rect x="0" y="0" width="40" height="3" fill="#c8a060" />
             </svg>
 
+            {/* Firewood logs */}
+            <div className="absolute bottom-1 w-16 h-5 z-10 pointer-events-none select-none">
+              <svg viewBox="0 0 20 6" className="pixelated w-full h-full">
+                {/* Left log angled */}
+                <path d="M 2 4 L 11 2 L 12 3 L 3 5 Z" fill="#8b5a2b" stroke="#5c3a21" strokeWidth="0.5" />
+                {/* Right log angled, crossing under */}
+                <path d="M 18 4 L 9 2 L 8 3 L 17 5 Z" fill="#704214" stroke="#4a2c0f" strokeWidth="0.5" />
+                {/* Center glowing coal / ember base */}
+                <rect x="7" y="4" width="6" height="2" fill="#e8721a" className="animate-pulse" />
+                <rect x="9" y="5" width="2" height="1" fill="#ffff00" className="animate-pulse" />
+              </svg>
+            </div>
+
             {/* Fire particles animated loop (3-4 frame loop) */}
-            <div className="w-12 h-12 mb-1 z-10 flex items-end justify-center fire-pulse">
+            <div className="w-12 h-12 mb-1.5 z-20 flex items-end justify-center fire-pulse">
               <svg 
                 viewBox="0 0 10 10" 
                 className="pixelated w-full h-full fill-[#e8721a] drop-shadow-[0_0_8px_#c44b1e]"
@@ -94,7 +109,7 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
             </div>
             
           </div>
-          <span className="font-press text-[9.5px] text-[#c8a060] uppercase tracking-wider select-none animate-pulse text-center">
+          <span className="font-press text-[9.5px] text-[#c8a060] uppercase tracking-wider select-none animate-pulse text-center z-10">
             * A warm hearth glow. It feels like home.
           </span>
         </div>
@@ -171,7 +186,7 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
           <span>* SAVED.</span>
           <div className="w-3.5 h-3.5">
             <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-[#ffff00]">
-              <path d="M3 0h1v1H3zm-1 1h3v1H2zm-1 1h5v1H1zm-1 1h7v1H0zm1 1h5v1H1zm2 1h3v1H2zm1 1h1v-1H3z" />
+              <path d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z" />
             </svg>
           </div>
         </div>

@@ -70,7 +70,7 @@ export const SavePoint: React.FC = () => {
         >
           {/* Pixelated 4-point star */}
           <path
-            d="M3 0h1v1H3zm-1 1h3v1H2zm-1 1h5v1H1zm-1 1h7v1H0zm1 1h5v1H1zm2 1h3v1H2zm1 1h1v-1H3z"
+            d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z"
             fill="#ffff00"
           />
         </svg>
@@ -88,7 +88,7 @@ export const SavePoint: React.FC = () => {
             <div className="absolute right-2.5 top-2.5 w-3.5 h-3.5">
               <svg viewBox="0 0 7 7" className="pixelated w-full h-full" fill="none">
                 <path
-                  d="M3 0h1v1H3zm-1 1h3v1H2zm-1 1h5v1H1zm-1 1h7v1H0zm1 1h5v1H1zm2 1h3v1H2zm1 1h1v-1H3z"
+                  d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z"
                   fill="#ffff00"
                 />
               </svg>

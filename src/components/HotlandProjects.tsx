@@ -262,7 +262,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
           {/* custom pixel star icon */}
           <div className="w-2.5 h-2.5 bg-transparent flex items-center">
             <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-white group-hover:fill-[#ffff00] transition-colors">
-              <path d="M3 0h1v1H3zm-1 1h3v1H2zm-1 1h5v1H1zm-1 1h7v1H0zm1 1h5v1H1zm2 1h3v1H2zm1 1h1v-1H3z" />
+              <path d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z" />
             </svg>
           </div>
           <span>* View more on GitHub</span>
@@ -275,7 +275,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
         >
           <div className="w-2.5 h-2.5 bg-transparent flex items-center">
             <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-white group-hover:fill-[#ffff00] transition-colors">
-              <path d="M3 0h1v1H3zm-1 1h3v1H2zm-1 1h5v1H1zm-1 1h7v1H0zm1 1h5v1H1zm2 1h3v1H2zm1 1h1v-1H3z" />
+              <path d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z" />
             </svg>
           </div>
           <span>* View more on LinkedIn</span>

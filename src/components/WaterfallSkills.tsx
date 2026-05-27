@@ -23,12 +23,12 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = 120);
+    let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
     // Handle resize
     const handleResize = () => {
-      width = canvas.width = 120;
+      width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
     window.addEventListener('resize', handleResize);
@@ -64,13 +64,13 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
       }
     }
 
-    const particles: PixelParticle[] = Array.from({ length: 45 }, () => new PixelParticle());
+    const particles: PixelParticle[] = Array.from({ length: 250 }, () => new PixelParticle());
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw faint dark blue waterfall back column
-      ctx.fillStyle = 'rgba(26, 64, 96, 0.2)';
+      // Draw faint dark blue waterfall back column (ambient tint)
+      ctx.fillStyle = 'rgba(26, 64, 96, 0.08)';
       ctx.fillRect(0, 0, width, height);
 
       // Draw falling pixel particles
@@ -117,8 +117,8 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
         </svg>
       </div>
 
-      {/* CANVAS WATERFALL: Right edge pixel particles */}
-      <div className="absolute right-[4%] top-0 bottom-0 w-[120px] z-10 pointer-events-none select-none border-x border-[#1a4060]/20">
+      {/* CANVAS WATERFALL: Covers the entire section behind text */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <canvas ref={canvasRef} className="w-full h-full pixelated" />
       </div>
 
@@ -141,7 +141,7 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
           {/* Character Info header */}
           <div className="flex justify-between items-center border-b-2 border-white pb-4 mb-8 font-press text-[11px] md:text-[13px] text-white">
             <div>"AHMED MURTAZA MALIK"</div>
-            <div>LV 26</div>
+            <div>LV 22</div>
             <div className="max-sm:hidden">HP 99 / 99</div>
           </div>
 

@@ -9,6 +9,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
   const [showDogText, setShowDogText] = useState(false);
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const snowCanvasRef = useRef<HTMLCanvasElement>(null);
 
   // Gentle Mouse Parallax Effect for Snowdin Forest layers
   useEffect(() => {
@@ -28,6 +29,81 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
       if (container) {
         container.removeEventListener('mousemove', handleMouseMove);
       }
+    };
+  }, []);
+
+  // Snowdin background snowfall animation
+  useEffect(() => {
+    const canvas = snowCanvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', handleResize);
+
+    class SnowParticle {
+      x: number;
+      y: number;
+      size: number;
+      speed: number;
+      wind: number;
+      opacity: number;
+
+      constructor(initY = false) {
+        this.x = Math.random() * width;
+        this.y = initY ? Math.random() * height : -10;
+        this.size = Math.floor(Math.random() * 3) + 2; // 2px to 4px
+        this.speed = Math.random() * 1.2 + 0.8; // gentle fall
+        this.wind = Math.random() * 0.4 - 0.1; // slight drift
+        this.opacity = Math.random() * 0.6 + 0.3;
+      }
+
+      update() {
+        this.y += this.speed;
+        this.x += this.wind;
+
+        if (this.y > height || this.x > width || this.x < 0) {
+          this.x = Math.random() * width;
+          this.y = -10;
+          this.speed = Math.random() * 1.2 + 0.8;
+          this.wind = Math.random() * 0.4 - 0.1;
+          this.opacity = Math.random() * 0.6 + 0.3;
+        }
+      }
+
+      draw(c: CanvasRenderingContext2D) {
+        c.fillStyle = `rgba(232, 240, 245, ${this.opacity})`;
+        c.fillRect(Math.floor(this.x), Math.floor(this.y), this.size, this.size);
+      }
+    }
+
+    const particles: SnowParticle[] = Array.from({ length: 65 }, () => new SnowParticle(true));
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach((p) => {
+        p.update();
+        p.draw(ctx);
+      });
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -98,6 +174,11 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
         </svg>
       </div>
 
+      {/* Background snowing canvas */}
+      <div className="absolute inset-0 z-5 pointer-events-none select-none">
+        <canvas ref={snowCanvasRef} className="w-full h-full pixelated" />
+      </div>
+
       {/* 3. Foreground Snow ground (fastest movement) */}
       <div 
         className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none select-none transition-transform duration-300 ease-out"
@@ -112,9 +193,9 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
         </svg>
       </div>
 
-      {/* EASTER EGG: Tiny hidden pixel dog winking/bobbing behind a tree */}
+      {/* EASTER EGG: Tiny hidden pixel dog winking/bobbing behind a tree (Safely aligned left on desktop, hidden on mobile) */}
       <div 
-        className="absolute bottom-32 left-[15%] z-20 pointer-events-auto cursor-none group"
+        className="absolute bottom-32 left-4 xl:left-8 z-20 pointer-events-auto cursor-none group hidden md:block"
         onMouseEnter={() => setShowDogText(true)}
         onMouseLeave={() => setShowDogText(false)}
       >
@@ -141,17 +222,17 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
       </div>
 
       {/* HEADER: Literal Section label floated left */}
-      <div className="z-10 select-none flex justify-between items-center w-full">
+      <div className="z-20 select-none flex justify-between items-center w-full">
         <span className="font-press text-[16px] md:text-[18px] text-[#4a7fb5] uppercase tracking-wider">
           About
         </span>
         <span className="font-press text-[11px] md:text-[12px] text-[#4a7fb5]/60 max-md:hidden select-none">
-          AREA 2: SNOWDEN
+          AREA 2: SNOWDIN
         </span>
       </div>
 
       {/* CORE CONTENT LAYOUT */}
-      <div className="z-10 flex flex-col md:flex-row items-center justify-center gap-12 mt-auto mb-auto w-full max-w-6xl mx-auto px-4">
+      <div className="z-20 flex flex-col md:flex-row items-center justify-center gap-12 mt-auto mb-auto w-full max-w-6xl mx-auto px-4">
         
         {/* Left Side: Dialogue Box (Wider battle design) */}
         <div className="flex-1 w-full max-w-4xl">
@@ -185,7 +266,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
                 {/* Yellow star indicator for inventory item active selection */}
                 <div className="w-2 h-2 shrink-0 bg-transparent flex items-center">
                   <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-[#d4a853] group-hover/tag:fill-[#ffff00] transition-colors">
-                    <path d="M3 0h1v1H3zm-1 1h3v1H2zm-1 1h5v1H1zm-1 1h7v1H0zm1 1h5v1H1zm2 1h3v1H2zm1 1h1v-1H3z" />
+                    <path d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z" />
                   </svg>
                 </div>
                 <span className="font-press text-[9px] text-[#e8f0f5] group-hover/tag:text-[#ffff00] whitespace-nowrap transition-colors">

@@ -128,7 +128,7 @@ export const RuinsHero: React.FC<RuinsHeroProps> = ({ isActive }) => {
           AREA 1: RUINS
         </div>
         <span className="font-press text-[11px] md:text-[12px] text-[#8b3a3a]/60 max-md:hidden select-none">
-          LV 26 DETERMINED
+          LV 22 DETERMINED
         </span>
       </div>
 

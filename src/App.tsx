@@ -10,7 +10,7 @@ import { CustomCursor } from './components/CustomCursor';
 import { TransitionWipe } from './components/TransitionWipe';
 import { HeartLoader } from './components/HeartLoader';
 import type { TransitionWipeHandle } from './components/TransitionWipe';
-import { playBackgroundMusic } from './utils/audio';
+import { playBackgroundMusic, stopBackgroundMusic } from './utils/audio';
 import './App.css';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   const [activeSection, setActiveSection] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const wipeRef = useRef<TransitionWipeHandle>(null);
+  const [musicEnabled, setMusicEnabled] = useState(true);
   
   // Guard reference to avoid double-firing wipes during programmatic scrolling
   const isNavigatingRef = useRef(false);
@@ -59,10 +60,12 @@ function App() {
 
   // Fallback to start background music on interaction once loaded
   useEffect(() => {
-    if (!introFinished) return;
+    if (!introFinished || !musicEnabled) return;
 
     const handleInteraction = () => {
-      playBackgroundMusic();
+      if (musicEnabled) {
+        playBackgroundMusic();
+      }
     };
 
     window.addEventListener('click', handleInteraction);
@@ -72,7 +75,17 @@ function App() {
       window.removeEventListener('click', handleInteraction);
       window.removeEventListener('keydown', handleInteraction);
     };
-  }, [introFinished]);
+  }, [introFinished, musicEnabled]);
+
+  const handleToggleMusic = () => {
+    if (musicEnabled) {
+      stopBackgroundMusic();
+      setMusicEnabled(false);
+    } else {
+      setMusicEnabled(true);
+      playBackgroundMusic();
+    }
+  };
 
   // Clean transition-wipe navigation on clicking side nav hearts
   const handleNavClick = (index: number) => {
@@ -110,6 +123,29 @@ function App() {
           <SavePoint />
           <TransitionWipe ref={wipeRef} />
           
+          {/* Music Toggle Button */}
+          <button
+            onClick={handleToggleMusic}
+            className="fixed top-6 right-6 z-50 bg-black border-[3px] border-white text-white p-3 font-press text-[9px] uppercase flex items-center gap-2.5 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none"
+            aria-label="Toggle Background Music"
+          >
+            <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center">
+              {musicEnabled ? (
+                <svg viewBox="0 0 9 9" className="pixelated w-full h-full fill-current">
+                  <path d="M5 1h3v2H5zm0 2h1v4H5zm-3 4h3v2H2z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 9 9" className="pixelated w-full h-full fill-current">
+                  <path d="M5 1h3v2H5zm0 2h1v2H5zm-3 4h3v2H2z" />
+                  <line x1="1" y1="8" x2="8" y2="1" stroke="currentColor" strokeWidth="1" />
+                </svg>
+              )}
+            </div>
+            <span className="max-sm:hidden">
+              Music: {musicEnabled ? 'On' : 'Off'}
+            </span>
+          </button>
+
           {/* Outlined/filled heart side navigation indicators */}
           <SideNav activeSection={activeSection} onNavClick={handleNavClick} />
 
