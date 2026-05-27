@@ -92,7 +92,7 @@ export const RuinsHero: React.FC<RuinsHeroProps> = ({ isActive }) => {
       {/* AMBIENT LIGHT BEAM: Pulses slowly in the center */}
       <div className="absolute inset-0 z-0 flex justify-center pointer-events-none select-none">
         <div
-          className="w-[180px] md:w-[320px] h-full bg-gradient-to-b from-[#d4956a]/30 via-[#d4956a]/15 to-transparent ruins-light-beam"
+          className="w-[350px] md:w-[900px] h-full bg-gradient-to-b from-[#d4956a]/32 via-[#d4956a]/16 to-transparent ruins-light-beam"
           style={{
             clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)',
           }}
