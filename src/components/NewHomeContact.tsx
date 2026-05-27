@@ -88,16 +88,19 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
             }
           `}} />
 
-          {/* Ambient Glow centered right behind the fire (Expanded size and higher opacity) */}
-          <div 
-            className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] max-md:w-[480px] max-md:h-[480px] bg-[radial-gradient(circle,_rgba(232,114,26,0.45)_0%,_rgba(196,75,30,0.16)_40%,_rgba(12,12,20,0)_70%)] z-0 pointer-events-none select-none"
-            style={{
-              animation: 'firelightFlicker 1.6s infinite ease-in-out'
-            }}
-          />
-
           <div className="w-36 h-24 bg-transparent relative flex justify-center items-end z-10">
             
+            {/* Ambient Glow centered right behind the fire (Expanded size and higher opacity) */}
+            <div 
+              className="absolute w-[750px] h-[750px] max-md:w-[480px] max-md:h-[480px] bg-[radial-gradient(circle,_rgba(232,114,26,0.45)_0%,_rgba(196,75,30,0.16)_40%,_rgba(12,12,20,0)_70%)] pointer-events-none select-none"
+              style={{
+                left: '50%',
+                top: '75%',
+                zIndex: 0,
+                animation: 'firelightFlicker 1.6s infinite ease-in-out'
+              }}
+            />
+
             {/* Fireplace stone frame SVG */}
             <svg 
               viewBox="0 0 40 24" 
