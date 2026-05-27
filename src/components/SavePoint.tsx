@@ -57,12 +57,12 @@ export const SavePoint: React.FC = () => {
       {/* Floating Star */}
       <button
         onClick={handleSave}
-        className="fixed bottom-6 right-6 z-40 w-10 h-10 flex items-center justify-center bg-transparent border-0 focus:outline-none transition-transform active:scale-95 cursor-none"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-transparent border-0 focus:outline-none transition-transform active:scale-95 cursor-none"
         title="SAVE"
       >
         <svg
-          width="32"
-          height="32"
+          width="24"
+          height="24"
           viewBox="0 0 7 7"
           className="pixelated w-full h-full save-star"
           fill="none"
@@ -78,8 +78,8 @@ export const SavePoint: React.FC = () => {
 
       {/* Save Dialogue Overlay */}
       {showDialog && (
-        <div className="fixed bottom-20 right-6 z-40 w-[90%] max-w-sm select-none pointer-events-none animate-[fadeIn_0.15s_ease-out]">
-          <div className="bg-[#000] border-[3px] border-white text-white p-5 font-press text-[12px] leading-relaxed shadow-[0_4px_20px_rgba(0,0,0,0.8)] relative">
+        <div className="fixed bottom-16 md:bottom-20 right-4 md:right-6 z-40 w-[90%] max-w-xs md:max-w-sm select-none pointer-events-none animate-[fadeIn_0.15s_ease-out]">
+          <div className="bg-[#000] border-[3px] border-white text-white p-4 md:p-5 font-press text-[10px] md:text-[12px] leading-relaxed shadow-[0_4px_20px_rgba(0,0,0,0.8)] relative">
             {/* Dialogue text */}
             <p className="m-0 select-none min-h-[1.5em] whitespace-pre-wrap">
               {typedText}

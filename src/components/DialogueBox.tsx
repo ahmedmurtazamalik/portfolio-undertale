@@ -105,13 +105,13 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
 
   return (
     <div
-      className={`bg-black border-[3px] border-white text-white p-8 font-press text-[14px] leading-relaxed relative flex flex-col select-none ${className}`}
+      className={`bg-black border-[3px] border-white text-white p-4 md:p-8 font-press text-[11px] md:text-[14px] leading-relaxed relative flex flex-col select-none ${className}`}
     >
       <div className="flex-1 relative">
         {/* Constant layout skeleton to prevent container resizing/jumping during typing */}
         <div className="invisible select-none pointer-events-none">
           {parsedLines.map((parsed, idx) => (
-            <p key={idx} className="m-0 mb-6 last:mb-0 min-h-[1.5em] whitespace-pre-wrap">
+            <p key={idx} className="m-0 mb-3 md:mb-6 last:mb-0 min-h-[1.5em] whitespace-pre-wrap">
               {parsed.rawText}
             </p>
           ))}
@@ -129,7 +129,7 @@ export const DialogueBox: React.FC<DialogueBoxProps> = ({
                 : parsed.chars;
 
             return (
-              <p key={idx} className="m-0 mb-6 last:mb-0 min-h-[1.5em] whitespace-pre-wrap select-none">
+              <p key={idx} className="m-0 mb-3 md:mb-6 last:mb-0 min-h-[1.5em] whitespace-pre-wrap select-none">
                 {visibleChars.map((charObj, charIdx) => (
                   <span key={charIdx} style={{ color: charObj.color }}>
                     {charObj.char}

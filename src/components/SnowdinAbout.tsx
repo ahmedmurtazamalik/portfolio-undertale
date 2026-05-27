@@ -125,7 +125,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
   return (
     <section 
       ref={containerRef}
-      className="scroll-section w-full h-screen bg-[#0a1628] text-[#e8f0f5] flex flex-col justify-between p-12 max-md:p-6 overflow-hidden relative"
+      className="scroll-section w-full h-screen bg-[#0a1628] text-[#e8f0f5] flex flex-col justify-between p-12 max-md:p-6 max-sm:p-4 overflow-hidden relative"
     >
       {/* BACKGROUND forest layers (Parallax) */}
       
@@ -232,7 +232,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
       </div>
 
       {/* CORE CONTENT LAYOUT */}
-      <div className="z-20 flex flex-col md:flex-row items-center justify-center gap-12 mt-auto mb-auto w-full max-w-6xl mx-auto px-4">
+      <div className="z-20 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-auto mb-auto w-full max-w-6xl mx-auto px-4 max-sm:px-2">
         
         {/* Left Side: Dialogue Box (Wider battle design) */}
         <div className="flex-1 w-full max-w-4xl">
@@ -240,15 +240,15 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
             lines={bioLines}
             isActive={isActive}
             speed={4}
-            className="shadow-[0_8px_0_#000] min-h-[225px] border-[3px] border-[#e8f0f5]"
+            className="shadow-[0_8px_0_#000] min-h-[140px] md:min-h-[225px] border-[3px] border-[#e8f0f5]"
           />
         </div>
 
         {/* Right Side: Adventurer Sprite & Inventory Tag chips */}
-        <div className="flex flex-col items-center gap-8 shrink-0">
+        <div className="flex flex-col items-center gap-4 md:gap-8 shrink-0 w-full md:w-auto">
           
-          {/* Custom Pixel Art Avatar generated for Murtaza */}
-          <div className="w-32 h-40 flex items-center justify-center bg-[#0d1f36]/40 border-3 border-[#4a7fb5] p-3 shadow-[0_5px_0_#000] overflow-hidden">
+          {/* Custom Pixel Art Avatar generated for Murtaza (Hidden on mobile screens to save vertical layout) */}
+          <div className="w-32 h-40 flex items-center justify-center bg-[#0d1f36]/40 border-3 border-[#4a7fb5] p-3 shadow-[0_5px_0_#000] overflow-hidden max-sm:hidden">
             <img 
               src="/murtaza_pixel_avatar.png"
               alt="Murtaza Pixel Avatar"
@@ -257,19 +257,19 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
           </div>
 
           {/* Tag Chips Styled as Inventory Items */}
-          <div className="flex flex-wrap justify-center gap-2.5 max-w-[320px]">
+          <div className="flex flex-wrap justify-center gap-2 max-md:gap-2.5 max-w-[320px]">
             {items.map((item) => (
               <div 
                 key={item}
-                className="bg-black border border-white px-3 py-1.5 flex items-center gap-2 shadow-[2.5px_2.5px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] transition-colors group/tag cursor-none"
+                className="bg-black border border-white px-2 py-1 md:px-3 md:py-1.5 flex items-center gap-1.5 md:gap-2 shadow-[2.5px_2.5px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] transition-colors group/tag cursor-none"
               >
                 {/* Yellow star indicator for inventory item active selection */}
-                <div className="w-2 h-2 shrink-0 bg-transparent flex items-center">
+                <div className="w-1.5 h-1.5 md:w-2 md:h-2 shrink-0 bg-transparent flex items-center">
                   <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-[#d4a853] group-hover/tag:fill-[#ffff00] transition-colors">
                     <path d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z" />
                   </svg>
                 </div>
-                <span className="font-press text-[9px] text-[#e8f0f5] group-hover/tag:text-[#ffff00] whitespace-nowrap transition-colors">
+                <span className="font-press text-[7px] md:text-[9px] text-[#e8f0f5] group-hover/tag:text-[#ffff00] whitespace-nowrap transition-colors">
                   {item}
                 </span>
               </div>

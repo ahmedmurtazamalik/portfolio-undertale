@@ -10,7 +10,7 @@ export const SideNav: React.FC<SideNavProps> = ({ activeSection, onNavClick }) =
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-6 md:flex md:flex-col max-md:top-auto max-md:bottom-6 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-0 max-md:flex-row max-md:justify-center">
+    <nav className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-4 md:gap-6">
       {sections.map((name, index) => {
         const isActive = activeSection === index;
         return (

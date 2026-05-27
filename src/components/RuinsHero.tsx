@@ -66,7 +66,7 @@ export const RuinsHero: React.FC<RuinsHeroProps> = ({ isActive }) => {
   }, [isActive, currentPool]);
 
   return (
-    <section className="scroll-section w-full h-screen bg-[#1a0a0a] text-[#f0e6d3] flex flex-col justify-between p-12 max-md:p-6 overflow-hidden relative">
+    <section className="scroll-section w-full h-screen bg-[#1a0a0a] text-[#f0e6d3] flex flex-col justify-between p-12 max-md:p-6 max-sm:p-4 overflow-hidden relative">
 
       {/* BACKGROUND: Tiled ancient ruins and walls in SVG */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-40">
@@ -133,21 +133,21 @@ export const RuinsHero: React.FC<RuinsHeroProps> = ({ isActive }) => {
       </div>
 
       {/* CENTER CONTENT */}
-      <div className="z-10 flex flex-col items-center justify-center text-center gap-8 mt-auto mb-auto w-full max-w-4xl">
-        <h1 className="font-press text-[36px] md:text-[54px] leading-tight tracking-wider text-white m-0 drop-shadow-[0_5px_0_#000] select-none">
+      <div className="z-10 flex flex-col items-center justify-center text-center gap-4 md:gap-8 mt-auto mb-auto w-full max-w-4xl">
+        <h1 className="font-press text-[20px] sm:text-[32px] md:text-[54px] leading-tight tracking-wider text-white m-0 drop-shadow-[0_5px_0_#000] select-none">
           Ahmed Murtaza Malik
         </h1>
-        <p className="font-press text-[14px] md:text-[19px] text-[#d4956a] m-0 tracking-wide drop-shadow-[0_2.5px_0_#000] select-none">
+        <p className="font-press text-[10px] sm:text-[14px] md:text-[19px] text-[#d4956a] m-0 tracking-wide drop-shadow-[0_2.5px_0_#000] select-none">
           CS Graduate. Builder of things.
         </p>
 
         {/* Reusable Typewriter Dialogue Box */}
-        <div className="w-full max-w-2xl mt-8 px-4">
+        <div className="w-full max-w-2xl mt-4 md:mt-8 px-2 max-sm:px-0">
           <DialogueBox
             key={cycleKey}
             lines={currentPool}
             isActive={isActive}
-            className="shadow-[0_8px_0_#000] min-h-[110px]"
+            className="shadow-[0_8px_0_#000] min-h-[80px] md:min-h-[110px]"
           />
         </div>
       </div>

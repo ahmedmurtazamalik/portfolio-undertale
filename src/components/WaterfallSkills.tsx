@@ -162,7 +162,7 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
   }, []);
 
   return (
-    <section className="scroll-section w-full h-screen bg-[#000d1a] text-[#c8e8e0] flex flex-col justify-between p-12 max-md:p-6 overflow-hidden relative">
+    <section className="scroll-section w-full h-screen bg-[#000d1a] text-[#c8e8e0] flex flex-col justify-between p-12 max-md:p-6 max-sm:p-4 overflow-hidden relative">
       
       {/* EASTER EGG BACKGROUND WATERFALL TEXT: faint "don't forget" */}
       <div className="absolute left-[8%] inset-y-0 z-0 pointer-events-none select-none flex flex-col justify-around opacity-[0.04] text-[#40c4aa] font-press text-[12px] uppercase select-none tracking-[0.25em] leading-none">
@@ -204,10 +204,10 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
       </div>
 
       {/* CORE SKILLS STATS LAYOUT */}
-      <div className="z-10 flex-1 flex flex-col md:flex-row items-center justify-center gap-16 w-full max-w-5xl mx-auto px-4 my-auto relative">
+      <div className="z-10 flex-1 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full max-w-5xl mx-auto px-4 max-sm:px-2 my-auto relative">
         
         {/* Left Side: Stat box skills grid */}
-        <div className="flex-1 w-full max-w-3xl bg-black border-[3px] border-white p-10 max-md:p-6 shadow-[8px_8px_0_#000] relative">
+        <div className="flex-1 w-full max-w-3xl bg-black border-[3px] border-white p-5 md:p-10 mb-4 md:mb-8 shadow-[8px_8px_0_#000] relative">
           
           {/* Character Info header */}
           <div className="flex justify-between items-center border-b-2 border-white pb-4 mb-8 font-press text-[11px] md:text-[13px] text-white">
@@ -220,51 +220,51 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
           <div className="flex flex-col gap-6 select-none">
             
             {/* Category: Languages */}
-            <div className="grid grid-cols-[130px_1fr] max-md:grid-cols-[100px_1fr] gap-6 items-start group/skill cursor-none">
-              <span className="font-press text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[130px_1fr] gap-4 md:gap-6 items-start group/skill cursor-none">
+              <span className="font-press text-[9px] md:text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
                 LANGUAGES
               </span>
-              <span className="font-press text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
+              <span className="font-press text-[9px] md:text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
                 C++ · Python · JavaScript · C# · Rust · Java · SQL · Assembly
               </span>
             </div>
 
             {/* Category: Frameworks */}
-            <div className="grid grid-cols-[130px_1fr] max-md:grid-cols-[100px_1fr] gap-6 items-start group/skill cursor-none">
-              <span className="font-press text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[130px_1fr] gap-4 md:gap-6 items-start group/skill cursor-none">
+              <span className="font-press text-[9px] md:text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
                 FRAMEWORKS
               </span>
-              <span className="font-press text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
+              <span className="font-press text-[9px] md:text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
                 React · Node.js · Express · Svelte · JavaFX
               </span>
             </div>
 
             {/* Category: Parallel Computing */}
-            <div className="grid grid-cols-[130px_1fr] max-md:grid-cols-[100px_1fr] gap-6 items-start group/skill cursor-none">
-              <span className="font-press text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[130px_1fr] gap-4 md:gap-6 items-start group/skill cursor-none">
+              <span className="font-press text-[9px] md:text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
                 HPC
               </span>
-              <span className="font-press text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
+              <span className="font-press text-[9px] md:text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
                 CUDA · OpenCL · MPI · OpenMP · SIMD · OpenACC
               </span>
             </div>
 
             {/* Category: AI & ML */}
-            <div className="grid grid-cols-[130px_1fr] max-md:grid-cols-[100px_1fr] gap-6 items-start group/skill cursor-none">
-              <span className="font-press text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[130px_1fr] gap-4 md:gap-6 items-start group/skill cursor-none">
+              <span className="font-press text-[9px] md:text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
                 AI & ML
               </span>
-              <span className="font-press text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
+              <span className="font-press text-[9px] md:text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
                 PyTorch · Transformers · GANs · Diffusion Models · RAG
               </span>
             </div>
 
             {/* Category: Tools */}
-            <div className="grid grid-cols-[130px_1fr] max-md:grid-cols-[100px_1fr] gap-6 items-start group/skill cursor-none">
-              <span className="font-press text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
+            <div className="grid grid-cols-[80px_1fr] md:grid-cols-[130px_1fr] gap-4 md:gap-6 items-start group/skill cursor-none">
+              <span className="font-press text-[9px] md:text-[11px] text-[#40c4aa] group-hover/skill:text-[#ffff00] leading-none select-none transition-colors duration-150">
                 TOOLS
               </span>
-              <span className="font-press text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
+              <span className="font-press text-[9px] md:text-[11px] text-white group-hover/skill:text-[#ffff00] leading-relaxed tracking-wider select-none transition-colors duration-150">
                 Git · Linux (Kali) · Docker · Kubernetes · MLflow · DVC
               </span>
             </div>
@@ -336,7 +336,7 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
 
       {/* EASTER EGG: Whispering Echo Flower */}
       <div 
-        className="absolute bottom-[18%] left-[6%] z-20 pointer-events-auto cursor-none group"
+        className="absolute bottom-[18%] left-[6%] z-20 pointer-events-auto cursor-none group hidden md:block"
         onMouseEnter={() => setShowEchoText(true)}
         onMouseLeave={() => setShowEchoText(false)}
       >

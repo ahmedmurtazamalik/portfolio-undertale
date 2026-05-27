@@ -110,7 +110,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
   ];
 
   return (
-    <section className="scroll-section w-full h-screen bg-[#1a0800] text-[#f5e0c8] flex flex-col justify-between p-12 max-md:p-6 overflow-hidden relative">
+    <section className="scroll-section w-full h-screen bg-[#1a0800] text-[#f5e0c8] flex flex-col justify-between p-12 max-md:p-6 max-sm:p-4 overflow-hidden relative">
 
       {/* BACKGROUND: Hotland girders and machinery silhouettes */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-20">
@@ -182,16 +182,16 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       </div>
 
       {/* CORE CARD GRID CONTAINER */}
-      <div className="z-10 flex-1 flex flex-col justify-center w-full max-w-6xl mx-auto my-2 overflow-hidden pr-1">
+      <div className="z-10 flex-1 flex flex-col justify-center w-full max-w-6xl mx-auto my-1.5 overflow-hidden pr-1">
 
         <div
           ref={cardsRef}
-          className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-6 w-full max-h-[82vh] md:max-h-none overflow-y-auto no-scrollbar p-1.5"
+          className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 max-sm:gap-3 w-full max-h-[52vh] sm:max-h-[65vh] md:max-h-[75vh] lg:max-h-none overflow-y-auto no-scrollbar p-1.5"
         >
           {projects.map((proj) => (
             <div
               key={proj.id}
-              className="bg-[#0f0502] border-[3px] border-[#c44b1e] p-5 shadow-[4px_4px_0_#000] flex flex-col justify-between gap-4 transition-all hover:border-[#e8721a] hover:bg-[#1a0800] duration-200"
+              className="bg-[#0f0502] border-[3px] border-[#c44b1e] p-3.5 md:p-5 shadow-[4px_4px_0_#000] flex flex-col justify-between gap-3 md:gap-4 transition-all hover:border-[#e8721a] hover:bg-[#1a0800] duration-200"
             >
               <div>
                 {/* Card Title & Icon */}
@@ -251,12 +251,12 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
       </div>
 
       {/* View More External buttons (Determined Yellow hovers) */}
-      <div className="z-10 flex flex-wrap justify-center gap-6 mt-2 mb-4 select-none max-sm:gap-3">
+      <div className="z-10 flex flex-wrap justify-center gap-4 md:gap-6 mt-1 md:mt-2 mb-3 md:mb-4 select-none max-sm:gap-2.5 max-sm:mb-2.5">
         <a
           href="https://github.com/ahmedmurtazamalik?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-black border-[3px] border-white text-white py-3.5 px-6 font-press text-[10px] uppercase flex items-center gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
+          className="bg-black border-[3px] border-white text-white py-2 px-4 max-sm:py-1.5 max-sm:px-3 font-press text-[10px] max-sm:text-[8px] uppercase flex items-center gap-2 md:gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
         >
           {/* custom pixel star icon */}
           <div className="w-2.5 h-2.5 bg-transparent flex items-center">
@@ -270,7 +270,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
           href="https://www.linkedin.com/in/ahmed-murtaza-malik/details/projects/"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-black border-[3px] border-white text-white py-3.5 px-6 font-press text-[10px] uppercase flex items-center gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
+          className="bg-black border-[3px] border-white text-white py-2 px-4 max-sm:py-1.5 max-sm:px-3 font-press text-[10px] max-sm:text-[8px] uppercase flex items-center gap-2 md:gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
         >
           <div className="w-2.5 h-2.5 bg-transparent flex items-center">
             <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-white group-hover:fill-[#ffff00] transition-colors">

@@ -29,7 +29,7 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
   ];
 
   return (
-    <section className="scroll-section w-full h-screen bg-[#0d0d14] text-[#f0ece4] flex flex-col justify-between p-12 max-md:p-6 overflow-hidden relative">
+    <section className="scroll-section w-full h-screen bg-[#0d0d14] text-[#f0ece4] flex flex-col justify-between p-12 max-md:p-6 max-sm:p-4 overflow-hidden relative">
       
       {/* BACKGROUND: Cozy room silhouettes and golden fire glow */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-25">
@@ -62,7 +62,7 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
       </div>
 
       {/* CORE CONTACT LAYOUT */}
-      <div className="z-10 flex-1 flex flex-col items-center justify-center gap-8 w-full max-w-4xl mx-auto px-4 my-auto relative">
+      <div className="z-10 flex-1 flex flex-col items-center justify-center gap-6 md:gap-8 w-full max-w-4xl mx-auto px-4 max-sm:px-2 my-auto relative">
         
         {/* Fireplace (Hearth) and Pixel Fire */}
         <div className="flex flex-col items-center gap-3 select-none relative">
@@ -152,19 +152,19 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
               "* Murtaza would love to hear from you."
             ]}
             isActive={isActive}
-            className="shadow-[0_8px_0_#000] min-h-[110px] border-[3px] border-[#8080b0]"
+            className="shadow-[0_8px_0_#000] min-h-[85px] md:min-h-[110px] border-[3px] border-[#8080b0]"
           />
         </div>
 
         {/* Pixel Styled Social/Contact Links */}
-        <div className="flex flex-wrap justify-center gap-4 w-full max-w-xl">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 w-full max-w-xl">
           {contactLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black border-[3px] border-white text-white py-3.5 px-6 font-press text-[10px] uppercase flex items-center gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
+              className="bg-black border-[3px] border-white text-white py-2 px-4 max-sm:py-1.5 max-sm:px-3 font-press text-[10px] max-sm:text-[8px] uppercase flex items-center gap-2 md:gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
             >
               {/* Custom Pixel Icon */}
               <div className="w-4 h-4 shrink-0 flex items-center justify-center">
@@ -181,9 +181,9 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
 
       </div>
 
-      {/* EASTER EGG: Heart-shaped Locket */}
+      {/* EASTER EGG: Heart-shaped Locket (Hidden on screens below sm to prevent footer overlap) */}
       <div 
-        className="absolute bottom-[16%] left-[10%] z-20 pointer-events-auto cursor-none group"
+        className="absolute bottom-[16%] left-[10%] z-20 pointer-events-auto cursor-none group hidden sm:block"
         onMouseEnter={() => setShowLocketText(true)}
         onMouseLeave={() => setShowLocketText(false)}
       >
@@ -207,12 +207,12 @@ export const NewHomeContact: React.FC<NewHomeContactProps> = ({ isActive }) => {
         </div>
       </div>
 
-      {/* FOOTER: copyright and SAVED callback indicator (INCREASED to 12px) */}
-      <div className="z-10 flex flex-col sm:flex-row justify-between items-center w-full border-t border-[#8080b0]/20 pt-4 font-press text-[12px] text-[#8080b0]/70 select-none max-sm:gap-2">
-        <span>AHMED MURTAZA MALIK © 2026</span>
+      {/* FOOTER: copyright and SAVED callback indicator */}
+      <div className="z-10 flex flex-col sm:flex-row justify-between items-center w-full border-t border-[#8080b0]/20 pt-4 font-press text-[10px] md:text-[12px] text-[#8080b0]/70 select-none max-sm:gap-2 max-sm:pb-4">
+        <span className="max-sm:text-[8px]">AHMED MURTAZA MALIK © 2026</span>
         
         {/* * SAVED. with save star */}
-        <div className="flex items-center gap-2 text-white">
+        <div className="flex items-center gap-2 text-white max-sm:text-[8px]">
           <span>* SAVED.</span>
           <div className="w-3.5 h-3.5">
             <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-[#ffff00]">
