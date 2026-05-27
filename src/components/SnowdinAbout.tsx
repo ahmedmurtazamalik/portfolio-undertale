@@ -195,7 +195,7 @@ export const SnowdinAbout: React.FC<SnowdinAboutProps> = ({ isActive }) => {
 
       {/* EASTER EGG: Tiny hidden pixel dog winking/bobbing behind a tree (Safely aligned left on desktop, hidden on mobile) */}
       <div 
-        className="absolute bottom-32 left-4 xl:left-8 z-20 pointer-events-auto cursor-none group hidden md:block"
+        className="absolute bottom-32 left-4 xl:left-8 z-30 pointer-events-auto cursor-none group hidden md:block"
         onMouseEnter={() => setShowDogText(true)}
         onMouseLeave={() => setShowDogText(false)}
       >
