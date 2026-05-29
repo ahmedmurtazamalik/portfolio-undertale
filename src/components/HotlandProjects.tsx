@@ -250,6 +250,23 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
 
       </div>
 
+      {/* View Writing Portfolio button */}
+      <div className="z-10 flex justify-center mt-1 mb-2 select-none">
+        <a
+          href="https://www.instagram.com/joeywritessometimes/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-black border-[3px] border-white text-white py-2 px-4 max-sm:py-1.5 max-sm:px-3 font-press text-[10px] max-sm:text-[8px] uppercase flex items-center gap-2 md:gap-3 shadow-[4px_4px_0_#000] hover:border-[#ffff00] hover:text-[#ffff00] hover:shadow-[0_0_15px_rgba(255,255,0,0.5)] transition-all active:scale-95 duration-200 cursor-none group"
+        >
+          <div className="w-2.5 h-2.5 bg-transparent flex items-center">
+            <svg viewBox="0 0 7 7" className="pixelated w-full h-full fill-white group-hover:fill-[#ffff00] transition-colors">
+              <path d="M3 0h1v1h-1zM3 1h1v1h-1zM2 2h3v1h-3zM0 3h7v1h-7zM2 4h3v1h-3zM3 5h1v1h-1zM3 6h1v1h-1z" />
+            </svg>
+          </div>
+          <span>* view writing portfolio</span>
+        </a>
+      </div>
+
       {/* View More External buttons (Determined Yellow hovers) */}
       <div className="z-10 flex flex-wrap justify-center gap-4 md:gap-6 mt-1 md:mt-2 mb-3 md:mb-4 select-none max-sm:gap-2.5 max-sm:mb-2.5">
         <a
