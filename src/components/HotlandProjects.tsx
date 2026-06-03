@@ -167,7 +167,7 @@ export const HotlandProjects: React.FC<HotlandProjectsProps> = ({ isActive }) =>
           className={`absolute bottom-12 right-0 w-80 bg-black border-2 border-white text-white p-4 font-press text-[12px] leading-relaxed shadow-[0_4px_12px_rgba(0,0,0,0.7)] transition-all duration-200 pointer-events-none z-30 ${showHotdogText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
         >
-          * A hot dog sits on a warm metal plate.<br />* It is cooked by the ambient heat of the room.<br />* It fills you with determination.
+          * A hot dog sits on a warm metal plate.<br />* It is cooked by the ambient heat of the room.<br />* It fills you with a warm feeling.
         </div>
       </div>
 

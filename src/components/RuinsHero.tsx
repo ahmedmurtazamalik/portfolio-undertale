@@ -14,11 +14,11 @@ const DIALOGUE_POOLS = [
   [
     "* Shadowy arches crumble in silence.",
     "* The ancient stones carry old memories.",
-    "* Determination whispers in your ear."
+    "* Hope whispers in your ear."
   ],
   [
     "* A small mouse runs into a crack in the wall.",
-    "* It seems determined to find the cheese.",
+    "* It seems eager to find the cheese.",
     "* You smile warmly."
   ],
   [
@@ -29,7 +29,7 @@ const DIALOGUE_POOLS = [
   [
     "* You hear a faint echo of laughter down the hall.",
     "* Home is just around the corner.",
-    "* You are filled with determination."
+    "* Despite everything, it's still you."
   ],
   [
     "* A warm draft carries the scent of cinnamon.",

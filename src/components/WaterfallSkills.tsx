@@ -328,7 +328,7 @@ export const WaterfallSkills: React.FC<WaterfallSkillsProps> = ({ isActive }) =>
               showCrystalText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
-            * A bioluminescent crystal.<br />* It glows with a warm, steady light.<br />* It fills you with determination.
+            * A bioluminescent crystal.<br />* It glows with a warm, steady light.<br />* It fills you with hope.
           </div>
         </div>
 
